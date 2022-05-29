@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
-const express = require('express');
+const express = require("express");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(require('./routes'));
+app.use(require("./routes"));
 
 mongoose.connect("mongodb://localhost:27017/pizza-hunt", {
     useNewUrlParser: true,
