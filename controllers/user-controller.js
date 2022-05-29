@@ -1,7 +1,7 @@
 const { User } = require("../models");
 
 const userController = {
-    //GET (all users) | api/users
+    //GET (all User) | api/users
     getAllUser(req, res) {
         User.find({})
             .populate({ path: "friends", select: "-__v" })
@@ -13,7 +13,7 @@ const userController = {
                 res.status(400).json(err);
             });
     },
-    //GET (individual user by ID) | api/users
+    //GET (individual User by ID) | api/users
     getUserById({ params }, res) {
         User.findOne({ _id: params.id })
             .populate({ path: "friends", select: "-__v" })
@@ -30,13 +30,13 @@ const userController = {
                 res.status(400).json(err);
             });
     },
-    // POST (create a user) | api/users
+    // POST (create a User) | api/users
     createUser({ body }, res) {
         User.create(body)
             .then(dbUserData => res.json(dbUserData))
             .catch(err => res.status(400).json(err));
     },
-    // PUT (update a user) | api/users/:userId
+    // PUT (update a User) | api/users/:userId
     updateUser({ params, body }, res) {
         User.findOneAndUpdate(
             { _id: params.id }, body,
@@ -50,7 +50,7 @@ const userController = {
             })
             .catch(err => res.status(400).json(err));
     },
-    // DELETE (delete a user) | api/users/:userId
+    // DELETE (delete a User) | api/users/:userId
     deleteUser({ params }, res) {
         User.findOneAndDelete(
             { _id: params.id })
